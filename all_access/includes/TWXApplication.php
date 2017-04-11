@@ -85,7 +85,7 @@ class TWXApplication {
         }
 
         $this->beforeAction($action);
-        call_user_method_array($function, $this, []);
+        call_user_func_array([$this, $function], []);
         $this->afterAction($action);
 
     }
