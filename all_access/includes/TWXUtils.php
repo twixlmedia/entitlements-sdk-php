@@ -115,6 +115,7 @@ final class TWXHtmlUtils {
         $attributes['name']    = $name;
         $attributes['method']  = $method;
         $attributes['action']  = $url;
+        $attributes['enctype'] = 'multipart/form-data';
         $attributes = self::attributes($attributes);
         return "<form {$attributes}>";
     }
