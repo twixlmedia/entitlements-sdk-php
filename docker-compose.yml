@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  webserver:
+    image: "nimmis/alpine-apache-php5"
+    hostname: "webserver"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - all_access:/web/html/all_access:cached
+      - print_subscriber:/web/html/print_subscriber:cached
+      - regions:/web/html/regions:cached
+      - ${PWD}/php.ini:/etc/php5/php.ini
+
+volumes:
+  all_access:
+    driver_opts:
+      type: none
+      device: $PWD/all_access
+      o: bind
+  print_subscriber:
+    driver_opts:
+      type: none
+      device: $PWD/print_subscriber
+      o: bind
+  regions:
+    driver_opts:
+      type: none
+      device: $PWD/regions
+      o: bind
